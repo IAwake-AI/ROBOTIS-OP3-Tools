@@ -284,6 +284,7 @@ bool ActionEditor::initializeActionEditor(std::string robot_file_path, std::stri
     std::string joint_name = it->first;
     robotis_framework::Dynamixel* dxl_info = it->second;
 
+    ROS_INFO("%s has been loaded", joint_name.c_str());
     joint_name_to_id_[joint_name] = dxl_info->id_;
     joint_id_to_name_[dxl_info->id_] = joint_name;
   }
@@ -303,6 +304,7 @@ bool ActionEditor::initializeActionEditor(std::string robot_file_path, std::stri
   }
 
   num_of_dxls_ = joint_id_to_name_.size();
+  ROS_INFO("%d joints have been loaded", num_of_dxls_);
 
   first_joint_row_ = 0;
   last_joint_row_ = num_of_dxls_ - 1;

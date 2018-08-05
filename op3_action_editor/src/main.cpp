@@ -18,7 +18,7 @@
 
 #include "op3_action_editor/action_editor.h"
 
-const int BAUD_RATE = 2000000;
+const int BAUD_RATE = 1000000;
 const double PROTOCOL_VERSION = 2.0;
 const int SUB_CONTROLLER_ID = 200;
 const std::string SUB_CONTROLLER_DEVICE = "/dev/ttyUSB0";
@@ -37,6 +37,7 @@ void sighandler(int sig)
 bool turnOnDynamixelPower(const std::string &device_name, const int &baud_rate)
 {
   // power on
+  /** IAwake TODO: simulate the power board
   dynamixel::PortHandler *_port_h = (dynamixel::PortHandler *) dynamixel::PortHandler::getPortHandler(device_name.c_str());
   bool _set_port = _port_h->setBaudRate(baud_rate);
   if (_set_port == false)
@@ -57,7 +58,7 @@ bool turnOnDynamixelPower(const std::string &device_name, const int &baud_rate)
   {
     ROS_INFO("Power on DXLs!");
   }
-
+*/
 
   usleep(100 * 1000);
 
@@ -66,7 +67,7 @@ bool turnOnDynamixelPower(const std::string &device_name, const int &baud_rate)
 
 int main(int argc, char **argv)
 {
-  ros::init(argc, argv, "THORMANG3 Action Editor");
+  ros::init(argc, argv, "I, Awake Action Editor");
   ros::NodeHandle nh;
 
   std::string offset_file   = nh.param<std::string>("offset_table", "");

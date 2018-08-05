@@ -117,7 +117,7 @@ void QNodeOP3::pointStampedCallback(const geometry_msgs::PointStamped::ConstPtr 
   // transform : world to local
   geometry_msgs::Pose local_pose, world_pose;
   world_pose.position = msg->point;
-  bool result = transformPose("/world", "/body_link", world_pose, local_pose);
+  bool result = transformPose("/world", "/pelvis", world_pose, local_pose);
   if(result == false)
   {
     log(Warn, "transformation is failed.");
@@ -146,7 +146,7 @@ void QNodeOP3::interactiveMarkerFeedback(const visualization_msgs::InteractiveMa
 
       // transform : world to local
       geometry_msgs::Pose local_pose;
-      bool result = transformPose("/world", "/body_link", feedback->pose, local_pose);
+      bool result = transformPose("/world", "/pelvis", feedback->pose, local_pose);
       if(result == false)
       {
         log(Warn, "transformation is failed.");
@@ -190,7 +190,7 @@ void QNodeOP3::makeInteractiveMarker(const geometry_msgs::Pose &marker_pose)
 
   // transform : local to world
   geometry_msgs::Pose world_pose;
-  bool result = transformPose("/world", "/body_link", marker_pose, world_pose, true);
+  bool result = transformPose("/world", "/pelvis", marker_pose, world_pose, true);
   if(result == false) world_pose = marker_pose;
 
   visualization_msgs::InteractiveMarker interactive_marker;
@@ -337,7 +337,7 @@ bool QNodeOP3::updateInteractiveMarker(const geometry_msgs::Pose &pose)
 
   // transform : local to world
   geometry_msgs::Pose world_pose;
-  bool result = transformPose("/world", "/body_link", pose, world_pose, true);
+  bool result = transformPose("/world", "/pelvis", pose, world_pose, true);
   if(result == false) world_pose = pose;
 
   interactive_marker_server_->setPose(interactive_marker.name, world_pose);
@@ -359,7 +359,7 @@ void QNodeOP3::getInteractiveMarkerPose()
 
   // transform : world to local
   geometry_msgs::Pose local_pose;
-  bool result = transformPose("/world", "/body_link", _interactive_marker.pose, local_pose);
+  bool result = transformPose("/world", "/pelvis", _interactive_marker.pose, local_pose);
   if(result == false) local_pose = _interactive_marker.pose;
 
   // update pose ui
@@ -556,7 +556,7 @@ void QNodeOP3::visualizePreviewFootsteps(bool clear)
   ros::Time now = ros::Time::now();
   visualization_msgs::Marker rviz_marker;
 
-  rviz_marker.header.frame_id = "body_link";
+  rviz_marker.header.frame_id = "pelvis";
   rviz_marker.header.stamp = now;
   rviz_marker.ns = "foot_step_marker";
 
@@ -572,7 +572,7 @@ void QNodeOP3::visualizePreviewFootsteps(bool clear)
   double height = -0.229;
 
   geometry_msgs::Pose local_pose, world_pose;
-  bool result = transformPose("/world", "/body_link", world_pose, local_pose);
+  bool result = transformPose("/world", "/pelvis", world_pose, local_pose);
   if(result == true)
     height = local_pose.position.z;
 

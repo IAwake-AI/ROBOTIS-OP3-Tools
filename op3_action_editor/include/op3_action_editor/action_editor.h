@@ -36,7 +36,7 @@
 #include "robotis_controller/robotis_controller.h"
 #include "op3_action_module/action_module.h"
 
-#define ROBOT_NAME "OP3"
+#define ROBOT_NAME "robotis_op3"
 
 namespace robotis_op
 {

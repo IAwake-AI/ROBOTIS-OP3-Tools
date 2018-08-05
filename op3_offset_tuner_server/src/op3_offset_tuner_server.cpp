@@ -282,7 +282,7 @@ void OffsetTunerServer::jointTorqueOnOffCallback(const op3_offset_tuner_msgs::Jo
     map_it = robot_offset_data_.find(joint_name);
     if (map_it == robot_offset_data_.end())
     {
-      ROS_ERROR("Invalid Joint Name");
+      ROS_ERROR("Invalid Joint Name %s", joint_name.c_str());
       continue;
     }
     else
@@ -380,7 +380,7 @@ void OffsetTunerServer::getInitPose(const std::string &path)
     has_offset_file = true;
   } catch (const std::exception& e)
   {
-    ROS_ERROR("Fail to load offset yaml file.");
+    ROS_ERROR("OffsetTunerServer: Fail to load offset yaml file.");
     has_offset_file = false;
   }
 
