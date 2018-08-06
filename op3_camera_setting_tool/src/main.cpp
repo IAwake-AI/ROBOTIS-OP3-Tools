@@ -354,6 +354,8 @@ bool setParamCallback(op3_camera_setting_tool::SetParameters::Request &req, op3_
   setV4lParameter("saturation", req.params.saturation);
   setV4lParameter("sharpness", req.params.sharpness);
   setV4lParameter("gain", req.params.gain);
+  
+
   // focus
   setV4lParameter("focus_auto", req.params.focus_auto);
   if (req.params.focus_auto == false)
@@ -450,6 +452,8 @@ void resetParameter()
   setV4lParameter("saturation", g_dyn_config.saturation);
   setV4lParameter("sharpness", g_dyn_config.sharpness);
   setV4lParameter("gain", g_dyn_config.gain);
+ 
+
   // focus
   setV4lParameter("focus_auto", g_dyn_config.focus_auto);
   if (g_dyn_config.focus_auto == false)
@@ -457,7 +461,6 @@ void resetParameter()
     //0-255, -1 "leave alone"
     setV4lParameter("focus_absolute", g_dyn_config.focus_absolute);
   }
-
   // exposure
   // turn down exposure control (from max of 3)
   setV4lParameter("exposure_auto", g_dyn_config.exposure_auto);
