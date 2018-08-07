@@ -17,8 +17,6 @@ id_joint:
   16 : l_knee
   17 : r_ank_pitch
   18 : l_ank_pitch
-  26 : head_pan 
-  27 : head_tilt
   21 : abs_y
   22 : abs_x
   23 : abs_z

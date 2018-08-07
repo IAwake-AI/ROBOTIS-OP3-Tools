@@ -20,6 +20,3 @@ legs:
   8 : l_knee
   9 : r_ank_pitch
   10 : l_ank_pitch
-body: 
-  1 : head_pan
-  2 : head_tilt
