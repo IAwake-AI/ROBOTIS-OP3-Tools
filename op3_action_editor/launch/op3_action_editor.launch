@@ -8,7 +8,7 @@
   <param name ="action_file_path"        value="$(find op3_action_module)/data/motion_4095_new.bin"/>
     
   <!-- Action Editor -->
-  <node pkg="op3_action_editor" type="op3_action_editor" name="op3_action_editor" output="screen" launch-prefix="gdb -ex run --args"/>
+  <node pkg="op3_action_editor" type="op3_action_editor" name="op3_action_editor" output="screen" />
     
 <!--
 	launch-prefix="gdb -ex run - -args"
